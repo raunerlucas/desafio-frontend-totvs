@@ -10,8 +10,9 @@
     p-placeholder="Nome do Pokemon"
     p-label="PO Input"
     p-auto-focus="true"
+    [(ngModel)]="searchTerm"
     ></po-input>
-    <button type="button"> Buscar</button>
+    <button type="button" (click)="onSearch()"> Buscar</button>
   </div>
 </section>
 <section>
