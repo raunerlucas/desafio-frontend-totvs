@@ -1,0 +1,24 @@
+.search-container {
+  position: relative; /* Para posicionar as sugestões */
+}
+
+.suggestions {
+  position: absolute;
+  top: 100%; /* Abaixo do input */
+  left: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  z-index: 10; /* Garante que as sugestões fiquem acima de outros elementos */
+}
+
+.suggestions li {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.suggestions li:hover {
+  background-color: #f2f2f2;
+}

@@ -1,4 +1,16 @@
-<div>
-  <input type="text" [(ngModel)]="searchTerm" placeholder="Digite o nome do pokemon"/>
-  <button type="button" (click)="onSearch()"> Buscar</button>
+<div class="search-container">
+  <input
+    type="text"
+    [(ngModel)]="searchTerm"
+    (ngModelChange)="onSearchChange()"
+    placeholder="Digite o nome do Pokémon..."
+  />
+  <button (click)="onSearch()">Buscar</button>
+  <ul class="suggestions" *ngIf="showSuggestions && pokemonSuggestions.length > 0">
+    <li *ngFor="let suggestion of pokemonSuggestions"
+        (click)="onSuggestionClick(suggestion)"
+    >
+      {{ suggestion }}
+    </li>
+  </ul>
 </div>
