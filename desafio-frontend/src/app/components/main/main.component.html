@@ -3,7 +3,7 @@
   <h1>
     TOTVS
   </h1>
-  <app-search-field></app-search-field>
+  <app-search-field (search)="onSearch($event)" ></app-search-field>
 </section>
 <section>
   <h3>SEU POKEMON</h3>
@@ -11,7 +11,7 @@
 <!--    <h2>{{ pokemon.name }}</h2>-->
 <!--    <img [src]="pokemon.sprites.front_default" alt="{{ pokemon.name }}" />-->
 <!--  </div>-->
-  <div *ngFor="let p of listSearch" class="divPokemon">
+  <div *ngFor="let p of listOfSearch" class="divPokemon">
     <div class="cardPokemon">
       <h2>{{ p.name }}</h2>
       <img [src]="p.sprites.front_default" alt="{{ p.name }}" />

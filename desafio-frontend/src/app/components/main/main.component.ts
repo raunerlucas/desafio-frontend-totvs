@@ -20,20 +20,30 @@ import {SearchFieldComponent} from "../search-field/search-field.component";
 })
 
 export class MainComponent {
-  searchTerm = '';
-  pokemon: Pokemon | null = null;
-  listSearch: Pokemon[] = [];
-  isLoading = false; // Para indicar quando a requisição está em andamento
+  listOfSearch: Pokemon[] = [];
+  isLoading?: boolean;
+  pokemon?: Pokemon;
 
-  constructor(private pokemonService: PokemonService) {}
+  errorNotFound = false;
 
-  onSearch() {
+  constructor(private pokemonService: PokemonService) {
+  };
+
+  isPokemon(Pokemon: Pokemon | null) {
+    return Pokemon === null;
+  };
+
+  onSearch(searchTerm: string) {
     this.isLoading = true;
-    this.pokemonService.getPokemon(this.searchTerm).subscribe(
+    this.pokemonService.getPokemon(searchTerm).subscribe(
       (pokemon) => {
-        this.pokemon = pokemon;
+        if (this.isPokemon(pokemon)) {
+          this.errorNotFound = true;
+        }else {
+          this.pokemon = pokemon!;
+          this.listOfSearch.push(this.pokemon!);
+        }
         this.isLoading = false;
-        this.listSearch.push(pokemon as Pokemon);
       }
     );
   }
