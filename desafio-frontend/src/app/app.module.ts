@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from "./pages/home/home.component";
 import { PoModule } from '@po-ui/ng-components';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { PoModule } from '@po-ui/ng-components';
     BrowserModule,
     AppRoutingModule,
     HomeComponent,
+    HttpClientModule,
     PoModule
 ],
   providers: [],
