@@ -30,6 +30,9 @@ export class PokemonService {
       );
   }
 
+  // TODO: toda vez que chama getPokemonNames, ele faz uma requisição para buscar todos os pokemons
+  // e depois filtra. Poderiamos fazer um cache para não precisar buscar todos os pokemons toda vez
+
   getAllPokemonNames(): Observable<any[] | string[]> {
     const url = `${this.apiUrl}pokemon?limit=100000&offset=0`;
 
