@@ -24,7 +24,7 @@ export class SearchFieldComponent {
   constructor(private pokemonService: PokemonService) {}
 
   onSearchChange() {
-    if (this.searchTerm.length >= 3) {
+    if (this.searchTerm.length > 2) {
       this.pokemonService.getPokemonNames(this.searchTerm).subscribe(
         (suggestions: string[]) => {
           this.pokemonSuggestions = suggestions;

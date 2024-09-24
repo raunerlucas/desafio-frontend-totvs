@@ -6,6 +6,7 @@ import {PokemonModel} from "../../model/pokemon.model";
 import {PokemonService} from "../../services/pokemon.service";
 import {SearchFieldComponent} from "../search-field/search-field.component";
 import {ErrorComponent} from "../error/error.component";
+import {CollapsableCardComponent} from "../collapsable-card/collapsable-card.component";
 
 @Component({
   selector: 'app-main',
@@ -15,14 +16,15 @@ import {ErrorComponent} from "../error/error.component";
     PoModule,
     FormsModule,
     SearchFieldComponent,
-    ErrorComponent
+    ErrorComponent,
+    CollapsableCardComponent
   ],
   templateUrl: './main.component.html',
   styleUrl: './main.component.css'
 })
 
 export class MainComponent {
-  listOfSearch: PokemonModel[] = [];
+  listOfSearch: PokemonModel[] = JSON.parse(localStorage.getItem('listOfSearch') || '[]');
   isLoading?: boolean;
   pokemon?: PokemonModel;
 
@@ -31,16 +33,22 @@ export class MainComponent {
   constructor(private pokemonService: PokemonService) {
   };
 
+  saveListToLocalStorage() {
+    localStorage.setItem('listOfSearch', JSON.stringify(this.listOfSearch));
+  }
+
+
   onSearch(searchTerm: string) {
     this.isLoading = true;
     this.pokemonService.getPokemon(searchTerm).subscribe(
       (pokemon) => {
         if (pokemon === null) {
           this.errorNotFound = true;
-        }else {
+        } else {
           this.errorNotFound = false;
           this.pokemon = pokemon!;
           this.listOfSearch.push(this.pokemon!);
+          this.saveListToLocalStorage();
         }
         this.isLoading = false;
       }

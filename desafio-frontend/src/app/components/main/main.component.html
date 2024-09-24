@@ -6,12 +6,12 @@
   <app-search-field (search)="onSearch($event)" ></app-search-field>
 </section>
 <section>
-  <h3>SEU POKEMON</h3>
-  <div *ngFor="let p of listOfSearch" class="divPokemon">
-    <div class="cardPokemon">
-      <h2>{{ p.name }}</h2>
-      <img [src]="p.sprites.front_default" alt="{{ p.name }}" />
-    </div>
+  <h3>SEUS POKEMONS</h3>
+  <div *ngFor="let p of listOfSearch">
+    <app-collapsable-card [pokemon]="p"></app-collapsable-card>
+  </div>
+  <div *ngIf="listOfSearch.length <= 0">
+    <h4>Voce ainda não procurou por nenhum pokemon.</h4>
   </div>
   <app-error *ngIf="errorNotFound"></app-error>
 </section>
