@@ -1,18 +1,19 @@
 import {Injectable} from '@angular/core';
 import {environment} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
-import {catchError, map, Observable, of} from "rxjs";
-import {Pokemon, PokemonListResponse} from "../model/Pokemon";
+import {BehaviorSubject, catchError, map, Observable, of, tap} from "rxjs";
+import {PokemonListResponse, PokemonModel} from "../model/pokemon.model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class PokemonService {
   private apiUrl = environment.apiPokemosBase;
+  private pokemonNamesCache$: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
 
   constructor(private http: HttpClient) {}
 
-  getPokemon(name: string): Observable<Pokemon | null> {
+  getPokemon(name: string): Observable<PokemonModel | null> {
     if (!name.trim()) {
       return of(null);
     }
@@ -20,7 +21,7 @@ export class PokemonService {
     const url = `${this.apiUrl}pokemon/${name.toLowerCase()}`;
 
     return this.http
-      .get<Pokemon>(url)
+      .get<PokemonModel>(url)
       .pipe(
         catchError(
           error => {
@@ -30,19 +31,24 @@ export class PokemonService {
       );
   }
 
-  // TODO: toda vez que chama getPokemonNames, ele faz uma requisição para buscar todos os pokemons
-  // e depois filtra. Poderiamos fazer um cache para não precisar buscar todos os pokemons toda vez
-
-  getAllPokemonNames(): Observable<any[] | string[]> {
+  getAllPokemonNames(): Observable<string[]> {
     const url = `${this.apiUrl}pokemon?limit=100000&offset=0`;
 
-    return this.http.get<PokemonListResponse>(url).pipe(
-      map(response => response.results.map(pokemon => pokemon.name)),
-      catchError(error => {
-        console.error('Erro ao buscar nomes de Pokémons:', error);
-        return of([]);
-      })
-    );
+    if (this.pokemonNamesCache$.getValue().length === 0) {
+      return this.http.get<PokemonListResponse>(url).pipe(
+        tap(response => {
+          const names = response.results.map(pokemon => pokemon.name);
+          this.pokemonNamesCache$.next(names);
+        }),
+        map(response => response.results.map(pokemon => pokemon.name)),
+        catchError(error => {
+          console.error('Erro ao buscar nomes de Pokémons:', error);
+          return of([]);
+        })
+      );
+    } else {
+      return this.pokemonNamesCache$.asObservable();
+    }
   }
 
   getPokemonNames(searchTerm: string = '', limit = 5): Observable<string[]> {

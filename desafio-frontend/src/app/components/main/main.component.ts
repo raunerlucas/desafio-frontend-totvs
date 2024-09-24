@@ -2,9 +2,10 @@ import {CommonModule} from '@angular/common';
 import {Component} from '@angular/core';
 import {PoModule} from '@po-ui/ng-components';
 import {FormsModule} from "@angular/forms";
-import {Pokemon} from "../../model/Pokemon";
+import {PokemonModel} from "../../model/pokemon.model";
 import {PokemonService} from "../../services/pokemon.service";
 import {SearchFieldComponent} from "../search-field/search-field.component";
+import {ErrorComponent} from "../error/error.component";
 
 @Component({
   selector: 'app-main',
@@ -13,33 +14,31 @@ import {SearchFieldComponent} from "../search-field/search-field.component";
     CommonModule,
     PoModule,
     FormsModule,
-    SearchFieldComponent
+    SearchFieldComponent,
+    ErrorComponent
   ],
   templateUrl: './main.component.html',
   styleUrl: './main.component.css'
 })
 
 export class MainComponent {
-  listOfSearch: Pokemon[] = [];
+  listOfSearch: PokemonModel[] = [];
   isLoading?: boolean;
-  pokemon?: Pokemon;
+  pokemon?: PokemonModel;
 
   errorNotFound = false;
 
   constructor(private pokemonService: PokemonService) {
   };
 
-  isPokemon(Pokemon: Pokemon | null) {
-    return Pokemon === null;
-  };
-
   onSearch(searchTerm: string) {
     this.isLoading = true;
     this.pokemonService.getPokemon(searchTerm).subscribe(
       (pokemon) => {
-        if (this.isPokemon(pokemon)) {
+        if (pokemon === null) {
           this.errorNotFound = true;
         }else {
+          this.errorNotFound = false;
           this.pokemon = pokemon!;
           this.listOfSearch.push(this.pokemon!);
         }

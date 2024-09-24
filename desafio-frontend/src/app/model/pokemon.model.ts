@@ -1,4 +1,4 @@
-export interface Pokemon{
+export interface PokemonModel {
   name: string;
   sprites: {
     front_default: string;

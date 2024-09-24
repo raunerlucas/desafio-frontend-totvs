@@ -7,15 +7,11 @@
 </section>
 <section>
   <h3>SEU POKEMON</h3>
-<!--  <div *ngIf="pokemon">-->
-<!--    <h2>{{ pokemon.name }}</h2>-->
-<!--    <img [src]="pokemon.sprites.front_default" alt="{{ pokemon.name }}" />-->
-<!--  </div>-->
   <div *ngFor="let p of listOfSearch" class="divPokemon">
     <div class="cardPokemon">
       <h2>{{ p.name }}</h2>
       <img [src]="p.sprites.front_default" alt="{{ p.name }}" />
     </div>
   </div>
-
+  <app-error *ngIf="errorNotFound"></app-error>
 </section>

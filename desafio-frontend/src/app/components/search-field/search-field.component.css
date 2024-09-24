@@ -1,17 +1,17 @@
 .search-container {
-  position: relative; /* Para posicionar as sugestões */
+  position: relative;
 }
 
 .suggestions {
   position: absolute;
-  top: 100%; /* Abaixo do input */
+  top: 100%;
   left: 0;
   background-color: white;
   border: 1px solid #ccc;
   list-style: none;
   padding: 0;
   margin: 0;
-  z-index: 10; /* Garante que as sugestões fiquem acima de outros elementos */
+  z-index: 10;
 }
 
 .suggestions li {

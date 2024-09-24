@@ -4,7 +4,7 @@
     [(ngModel)]="searchTerm"
     (ngModelChange)="onSearchChange()"
     placeholder="Digite o nome do Pokémon..."
-  />
+  >
   <button (click)="onSearch()">Buscar</button>
   <ul class="suggestions" *ngIf="showSuggestions && pokemonSuggestions.length > 0">
     <li *ngFor="let suggestion of pokemonSuggestions"
