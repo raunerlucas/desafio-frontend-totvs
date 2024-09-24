@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import { MainComponent } from "../../components/main/main.component";;
+import {Component} from '@angular/core';
+import {MainComponent} from "../../components/main/main.component";
+
+
 
 @Component({
   selector: 'app-home',
