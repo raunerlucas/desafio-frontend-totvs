@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "deploy": "ng build --base-href /desafio-frontend-totvs/  && ngh --dir dist/desafio-frontend --repo https://github.com/raunerlucas/desafio-frontend-totvs.git",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -28,6 +29,7 @@
     "@angular/cli": "~18.2.4",
     "@angular/compiler-cli": "^18.2.3",
     "@types/jasmine": "~4.3.0",
+    "angular-cli-ghpages": "^2.0.1",
     "jasmine-core": "~4.6.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
