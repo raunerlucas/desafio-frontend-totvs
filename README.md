@@ -1,27 +1,65 @@
-# DesafioFrontend
+## Desafio Frontend TOTVS 2024: Pokédex
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.4.
+## Descrição
 
-## Development server
+Este projeto representa a minha solução para o Desafio Frontend 2024 da TOTVS, com o objetivo de criar uma aplicação web para busca de Pokémons. Utilizando a PokéAPI, desenvolvi uma Pokédex completa que permite aos usuários encontrar seus Pokémons favoritos e visualizar informações detalhadas sobre eles.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+**Funcionalidades Principais:**
 
-## Code scaffolding
+*   **Busca dinâmica por nome:** Encontre qualquer Pokémon digitando seu nome na barra de busca.
+*   **Visualização detalhada:** Clique em um Pokémon para visualizar informações completas, incluindo:
+    *   Imagem oficial
+    *   Tipo(s)
+    *   Habilidades
+    *   Status base (HP, Ataque, Defesa, etc.)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Demonstração
 
-## Build
+[Veja na pratica](https://raunerlucas.github.io/desafio-frontend-totvs/)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+## Tecnologias Utilizadas
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+A aplicação foi desenvolvida utilizando as seguintes tecnologias:
 
-## Running end-to-end tests
+**Front-End:**
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+*   Angular 18: Framework JavaScript para construção de interfaces de usuário.
+*   TypeScript: Linguagem de programação que adiciona tipagem estática ao JavaScript.
+*   HTML5: Linguagem de marcação para estruturar o conteúdo da página.
+*   CSS3: Linguagem de estilo para estilizar a aparência da página.
+*   Po UI: Biblioteca de componentes visuais para Angular, proporcionando uma interface moderna e responsiva.
 
-## Further help
+## Como Executar o Projeto
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+**Pré-requisitos:**
+
+*   Node.js (versão 18 ou superior): Ambiente de execução JavaScript.
+*   npm (gerenciador de pacotes Node): Instalado automaticamente com o Node.js.
+
+**Passos:**
+
+1.  **Clonar o Repositório:**
+    ```bash
+    git clone https://github.com/raunerlucas/desafio-frontend-totvs.git
+    ```
+2.  **Navegar até a pasta do projeto:**
+    ```bash
+    cd desafio-frontend-totvs
+    ```
+3.  **Instalar dependências:**
+    ```bash
+    npm install
+    ```
+4.  **Iniciar a aplicação:**
+    ```bash
+    npm start
+    ```
+5.  **Acessar a aplicação:** Abra seu navegador e acesse http://localhost:4200/
+
+## Considerações Adicionais
+
+*   A aplicação foi desenvolvida com foco na usabilidade e na responsividade, adaptando-se a diferentes dispositivos.
+*   O código foi escrito seguindo as melhores práticas de desenvolvimento, buscando clareza e organização.
+
+**Autor:** [Rauner Lucas Amaral](https://raunerlu.bio.link/)
