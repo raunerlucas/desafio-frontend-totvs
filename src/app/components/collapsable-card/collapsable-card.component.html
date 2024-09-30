@@ -1,9 +1,12 @@
 <div [class]="'container-custom '+pokemon.types[0].type.name">
-  <span>{{pokemon.id}}</span>
-  <h5>{{ pokemon.name }}</h5>
+  <div class="custom-title">
+    <span>{{pokemon.id}}</span>
+    <h3>{{ pokemon.name }}</h3>
+  </div>
   <div class="custom">
-    <ol class="types" *ngFor="let type of pokemon.types">
-      <li [class]="'type '+type.type.name">{{type.type.name}}</li>
+    <ol class="types">
+      <li *ngFor="let type of pokemon.types"
+          [class]="'type '+type.type.name">{{type.type.name}}</li>
     </ol>
     <img [src]="pokemon.sprites.front_default" [alt]="'Uma imagem do pokemon: '+pokemon.name">
   </div>

@@ -1,31 +1,35 @@
 *{
   display: flex;
   flex-direction: column;
-
   padding: 1em;
 }
 
 section{
   width: 100%;
   background-color: #fafafa;
+
 }
 
-.blueColorConfig{
+.blue-section{
   background-color: #2a64da;
 }
 
-.divPokemon{
+.searched{
   display: grid;
-  flex-direction: column-reverse;
-  justify-content: space-between;
-  align-items: baseline;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1em;
+  padding: 1em;
+  border-radius: 16px;
 }
 
-.cardPokemon{
-  padding: 1em;
-  margin: 1em 0;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+@media (max-width: 768px){
+  .searched{
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
 
-  width: 5em;
+@media (max-width: 480px){
+  .searched{
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

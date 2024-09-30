@@ -1,12 +1,12 @@
-<section class="blueColorConfig">
+<section class="blue-section">
   <po-icon p-icon="ph-fill ph-totvs-logo"></po-icon>
   <h1>
     TOTVS
   </h1>
   <app-search-field (search)="onSearch($event)" ></app-search-field>
 </section>
-<section>
-  <h3>SEUS POKEMONS</h3>
+<h3>SEUS POKEMONS</h3>
+<section class="searched">
   <div *ngFor="let p of listOfSearch">
     <app-collapsable-card [pokemon]="p"></app-collapsable-card>
   </div>

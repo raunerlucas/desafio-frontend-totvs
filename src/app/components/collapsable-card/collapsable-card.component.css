@@ -35,6 +35,63 @@
 .fairy {background-color: #f9aec7;}
 
 .container-custom{
-  width: 5em;
-  height: 6em;
+  width: auto;
+  min-width: 15em;
+  height: auto;
+
+  padding: .5em;
+  margin: .5em;
+
+  border-radius: 16px;
+  text-transform: capitalize;
 }
+
+.custom{
+  display: flex;
+  align-items: center;
+}
+
+.custom-title{
+  display: flex;
+  flex-direction: row-reverse;
+  padding: .5em;
+}
+
+img{
+  max-width: 100%;
+  height: auto;
+  align-self: flex-end;
+  width: 100%;
+}
+
+li{
+  list-style: none;
+}
+
+span{
+  background: rgba(128, 128, 128, 0.64);
+  text-align: center;
+  border-radius: 50%;
+  width: 2em;
+  height: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.types{
+  display: flex;
+  flex-direction: column;
+}
+
+.type{
+  color: white;
+  filter:brightness(.8);
+  padding: .25rem .5rem;
+  margin: .25rem;
+  font-size: .625rem;
+  border-radius: 1rem;
+  text-align: center;
+  text-transform: capitalize;
+}
+
