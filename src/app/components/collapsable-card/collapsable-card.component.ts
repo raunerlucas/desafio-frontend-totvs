@@ -13,4 +13,7 @@ import {NgForOf} from "@angular/common";
 })
 export class CollapsableCardComponent {
   @Input() pokemon!: PokemonModel;
+
+  // TODO: Eu quero que quando clicar ness componente, ele abra o modal de detalhes
+  // @Input() openDetails: Function;
 }

@@ -7,6 +7,7 @@ import {PokemonService} from "../../services/pokemon.service";
 import {SearchFieldComponent} from "../search-field/search-field.component";
 import {ErrorComponent} from "../error/error.component";
 import {CollapsableCardComponent} from "../collapsable-card/collapsable-card.component";
+import {DetailsModalComponent} from "../details-modal/details-modal.component";
 
 @Component({
   selector: 'app-main',
@@ -17,13 +18,16 @@ import {CollapsableCardComponent} from "../collapsable-card/collapsable-card.com
     FormsModule,
     SearchFieldComponent,
     ErrorComponent,
-    CollapsableCardComponent
+    CollapsableCardComponent,
+    DetailsModalComponent
   ],
   templateUrl: './main.component.html',
   styleUrl: './main.component.css'
 })
 
 export class MainComponent {
+  // TODO Antes de add no local storage, verificar se o pokemon já existe na lista
+
   listOfSearch: PokemonModel[] = JSON.parse(localStorage.getItem('listOfSearch') || '[]');
   isLoading?: boolean;
   pokemon?: PokemonModel;
@@ -37,7 +41,6 @@ export class MainComponent {
     localStorage.setItem('listOfSearch', JSON.stringify(this.listOfSearch));
   }
 
-
   onSearch(searchTerm: string) {
     this.isLoading = true;
     this.pokemonService.getPokemon(searchTerm).subscribe(
@@ -46,12 +49,17 @@ export class MainComponent {
           this.errorNotFound = true;
         } else {
           this.errorNotFound = false;
-          this.pokemon = pokemon!;
-          this.listOfSearch.push(this.pokemon!);
+          this.pokemon = pokemon;
+          this.listOfSearch.push(this.pokemon);
           this.saveListToLocalStorage();
         }
         this.isLoading = false;
       }
     );
   }
+
+  openDetails(pokemon: PokemonModel) {
+    this.pokemon = pokemon;
+  }
+
 }

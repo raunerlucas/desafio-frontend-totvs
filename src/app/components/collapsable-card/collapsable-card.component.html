@@ -1,4 +1,4 @@
-<div [class]="'container-custom '+pokemon.types[0].type.name">
+<div [class]="'container-custom '+pokemon.types[0].type.name" (click)="openDetails()">
   <div class="custom-title">
     <span>{{pokemon.id}}</span>
     <h3>{{ pokemon.name }}</h3>

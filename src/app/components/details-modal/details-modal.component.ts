@@ -1,4 +1,5 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {PokemonModel} from "../../model/pokemon.model";
 
 @Component({
   selector: 'app-details-modal',
@@ -8,5 +9,5 @@ import {Component} from '@angular/core';
   styleUrl: './details-modal.component.css'
 })
 export class DetailsModalComponent {
-
+  @Input() pokemon?: PokemonModel;
 }
