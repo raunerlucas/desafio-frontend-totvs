@@ -1,3 +1,4 @@
+[![github-pages](https://github.com/raunerlucas/desafio-frontend-totvs/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/raunerlucas/desafio-frontend-totvs/actions/workflows/pages/pages-build-deployment)
 ## Desafio Frontend TOTVS 2024: Pokédex
 
 ## Descrição
