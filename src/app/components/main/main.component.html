@@ -3,18 +3,22 @@
   <h1>
     TOTVS
   </h1>
-  <app-search-field (search)="onSearch($event)" ></app-search-field>
+  <app-search-field (search)="onSearch($event)"></app-search-field>
 </section>
-<app-details-modal [pokemon]="pokemon"></app-details-modal>
-<section >
+<app-details-modal *ngIf="pokemon"
+                   [pokemon]="pokemon"
+                   (close)="pokemon = null"
+></app-details-modal>
+<section>
   <h3>SEUS POKEMONS</h3>
   <div class="searched">
-    <app-collapsable-card *ngFor="let p of listOfSearch" [pokemon]="p"
-                        (openDetails)="openDetailsModal(p)"
+    <app-collapsable-card *ngFor="let p of listOfSearch.slice().reverse()"
+                          [pokemon]="p"
+                          (openDetails)="openDetailsModal(p)"
     ></app-collapsable-card>
   </div>
   <div *ngIf="listOfSearch.length <= 0">
     <h4>Voce ainda não procurou por nenhum pokemon.</h4>
   </div>
-  <app-error *ngIf="errorNotFound"></app-error>
 </section>
+<app-error *ngIf="errorNotFound"></app-error>

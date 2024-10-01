@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {environment} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {BehaviorSubject, catchError, map, Observable, of, tap} from "rxjs";
-import {PokemonListResponse, PokemonModel} from "../model/pokemon.model";
+import {PokemonDetailsModel, PokemonListResponse, PokemonModel} from "../model/pokemon.model";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,8 @@ export class PokemonService {
   private apiUrl = environment.apiPokemosBase;
   private pokemonNamesCache$: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
   getPokemon(name: string): Observable<PokemonModel | null> {
     if (!name.trim()) {
@@ -63,6 +64,17 @@ export class PokemonService {
         .filter(name => name.toLowerCase().includes(searchTermLower))
         .slice(0, limit)
       )
+    );
+  }
+
+  getDetailsPokemon(pokemon: PokemonModel): Observable<PokemonDetailsModel> {
+    const url = `${this.apiUrl}pokemon/${pokemon.name.toLowerCase()}`;
+
+    return this.http.get<PokemonDetailsModel>(url).pipe(
+      catchError(error => {
+        console.error('Erro ao buscar detalhes do Pokémon:', error);
+        throw new Error('Erro ao buscar detalhes do Pokémon');
+      })
     );
   }
 }

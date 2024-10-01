@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {Component} from '@angular/core';
 import {PoModule} from '@po-ui/ng-components';
 import {FormsModule} from "@angular/forms";
-import {PokemonModel} from "../../model/pokemon.model";
+import {PokemonDetailsModel, PokemonModel} from "../../model/pokemon.model";
 import {PokemonService} from "../../services/pokemon.service";
 import {SearchFieldComponent} from "../search-field/search-field.component";
 import {ErrorComponent} from "../error/error.component";
@@ -30,7 +30,7 @@ export class MainComponent {
 
   listOfSearch: PokemonModel[] = JSON.parse(localStorage.getItem('listOfSearch') || '[]');
   isLoading?: boolean;
-  pokemon?: PokemonModel;
+  pokemon?: PokemonDetailsModel | null;
 
   errorNotFound = false;
 
@@ -49,8 +49,8 @@ export class MainComponent {
           this.errorNotFound = true;
         } else {
           this.errorNotFound = false;
-          this.pokemon = pokemon;
-          this.listOfSearch.push(this.pokemon);
+          this.openDetailsModal(pokemon)
+          this.listOfSearch.push(pokemon);
           this.saveListToLocalStorage();
         }
         this.isLoading = false;
@@ -59,6 +59,10 @@ export class MainComponent {
   }
 
   openDetailsModal(pokemon: PokemonModel) {
-    this.pokemon = pokemon;
+    this.pokemonService.getDetailsPokemon(pokemon).subscribe(
+      (details) => {
+        this.pokemon = details;
+      }
+    );
   }
 }

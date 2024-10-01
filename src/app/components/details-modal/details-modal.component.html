@@ -1,1 +1,61 @@
-<h2>{{pokemon?.name}}</h2>
+<div class="container">
+  <div class="modal-content">
+    <p (click)="closeModal()" class="close-button">close</p>
+    <div class="pokemon-details">
+      <img [src]="pokemonImg" alt="Uma imagem do(a) {{pokemon?.name}}" class="pokemon-image">
+      <h2>{{ pokemon?.name }}</h2>
+      <p># {{ pokemon?.id }}</p>
+      <div class="pokemon-types"
+           *ngFor="let type of pokemon?.types">
+        <span class="pokemon-type {{type.type.name}}">{{ type.type.name }}</span>
+      </div>
+      <p>Altura: {{ pokemon?.height }}</p>
+      <p>Largura: {{ pokemon?.weight }}</p>
+    </div>
+    <div class="pokemon-stats">
+      <h3>Status</h3>
+      <div *ngFor="let stat of pokemon?.stats">
+        <span>{{ stat.stat.name }}: </span>
+        <div class="stat-bar">
+          <div class="stat-bar-fill" [style.width.%]="stat.base_stat">
+            <span>{{ stat.base_stat }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pokemon-abilities">
+      <h3>Abilities</h3>
+      <ul>
+        <li *ngFor="let abl of pokemon?.abilities">
+          <h5>{{ abl.ability.name }}</h5>
+        </li>
+      </ul>
+    </div>
+    <div class="pokemon-moves">
+      <h3>Notable Moves</h3>
+      <ol>
+        <li *ngFor="let move of pokemon?.moves">{{ move.move.name }}</li>
+      </ol>
+    </div>
+    <div *ngIf="pokemon?.evolutionChain" class="pokemon-evolution">
+      <h3>Evolution Chain</h3>
+      <div class="evolution-stage" *ngFor="let stage of pokemon?.evolutionChain">
+        <img [src]="stage.image" alt="{{stage.name}}">
+        <p>{{ stage.name }}</p>
+      </div>
+    </div>
+    <div class="pokemon-additional-info">
+      <h3>Additional Information</h3>
+      <p><strong>Pokedex Description:</strong> {{ pokemon?.description }}</p>
+      <p><strong>Habitat:</strong> {{ pokemon?.location_area_encounters }}</p>
+      <div class="pokemon-weaknesses">
+        <h4>Weaknesses</h4>
+        <span *ngFor="let weakness of pokemon?.weaknesses" class="pokemon-weakness">{{ weakness }}</span>
+      </div>
+      <div class="pokemon-resistances">
+        <h4>Resistances</h4>
+        <span *ngFor="let resistance of pokemon?.resistances" class="pokemon-resistance">{{ resistance }}</span>
+      </div>
+    </div>
+  </div>
+</div>
