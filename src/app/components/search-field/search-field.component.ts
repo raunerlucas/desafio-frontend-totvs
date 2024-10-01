@@ -21,24 +21,21 @@ export class SearchFieldComponent {
 
   @Output() search = new EventEmitter<string>();
 
-  constructor(private pokemonService: PokemonService) {}
+  constructor(private pokemonService: PokemonService) {
+  }
 
   onSearchChange() {
-    if (this.searchTerm.length > 2) {
-      this.pokemonService.getPokemonNames(this.searchTerm).subscribe(
-        (suggestions: string[]) => {
-          this.pokemonSuggestions = suggestions;
-          this.showSuggestions = true;
-        },
-        (error) => {
-          console.error("Erro ao obter sugestões:", error);
-        }
-      );
-    } else {
-      this.pokemonSuggestions = [];
-      this.showSuggestions = false;
-    }
+    this.pokemonService.getPokemonNames(this.searchTerm).subscribe(
+      (suggestions: string[]) => {
+        this.pokemonSuggestions = suggestions;
+        this.showSuggestions = true;
+      },
+      (error) => {
+        console.error("Erro ao obter sugestões:", error);
+      }
+    );
   }
+
 
   onSearch() {
     this.showSuggestions = false;

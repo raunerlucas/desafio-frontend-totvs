@@ -20,8 +20,6 @@ export class DetailsModalComponent {
   ngOnChanges() {
     this.pokemonImg = this.pokemon?.sprites.other.dream_world.front_default
       || this.pokemon?.sprites.other["official-artwork"].front_default;
-
-    console.log(this.pokemon);
   }
 
   closeModal() {

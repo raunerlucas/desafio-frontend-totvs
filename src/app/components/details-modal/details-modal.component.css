@@ -71,7 +71,8 @@
   height: 1.4em;
 
   display: flex;
-  justify-content: center;
+  padding-left: 2em;
+  justify-content: flex-start;
   align-items: center;
 }
 

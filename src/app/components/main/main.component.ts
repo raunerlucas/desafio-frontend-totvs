@@ -26,19 +26,25 @@ import {DetailsModalComponent} from "../details-modal/details-modal.component";
 })
 
 export class MainComponent {
-  // TODO Antes de add no local storage, verificar se o pokemon já existe na lista
 
   listOfSearch: PokemonModel[] = JSON.parse(localStorage.getItem('listOfSearch') || '[]');
   isLoading?: boolean;
   pokemon?: PokemonDetailsModel | null;
 
   errorNotFound = false;
+  searchedTerm: string = '';
 
   constructor(private pokemonService: PokemonService) {
   };
 
-  saveListToLocalStorage() {
-    localStorage.setItem('listOfSearch', JSON.stringify(this.listOfSearch));
+  saveListToLocalStorage(pokemon: PokemonModel) {
+    const index = this.listOfSearch.findIndex(p => p.id === pokemon.id);
+    const tamList = this.listOfSearch.length - 1;
+    if (tamList !== index || tamList === -1) {
+      index !== -1 ? this.listOfSearch.splice(index, 1) : null;
+      this.listOfSearch.push(pokemon);
+      localStorage.setItem('listOfSearch', JSON.stringify(this.listOfSearch));
+    }
   }
 
   onSearch(searchTerm: string) {
@@ -46,12 +52,11 @@ export class MainComponent {
     this.pokemonService.getPokemon(searchTerm).subscribe(
       (pokemon) => {
         if (pokemon === null) {
-          this.errorNotFound = true;
+          this.searchedTerm = searchTerm;
+          this.thorowError()
         } else {
-          this.errorNotFound = false;
           this.openDetailsModal(pokemon)
-          this.listOfSearch.push(pokemon);
-          this.saveListToLocalStorage();
+          this.saveListToLocalStorage(pokemon);
         }
         this.isLoading = false;
       }
@@ -64,5 +69,12 @@ export class MainComponent {
         this.pokemon = details;
       }
     );
+  }
+
+  thorowError() {
+    this.errorNotFound = true;
+    setTimeout(() => {
+      this.errorNotFound = false;
+    }, 3000);
   }
 }

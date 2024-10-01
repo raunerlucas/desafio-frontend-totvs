@@ -1,4 +1,4 @@
-<section class="blue-section">
+<section class="section-blue">
   <po-icon p-icon="ph-fill ph-totvs-logo"></po-icon>
   <h1>
     TOTVS
@@ -9,7 +9,7 @@
                    [pokemon]="pokemon"
                    (close)="pokemon = null"
 ></app-details-modal>
-<section>
+<section class="section-white">
   <h3>SEUS POKEMONS</h3>
   <div class="searched">
     <app-collapsable-card *ngFor="let p of listOfSearch.slice().reverse()"
@@ -21,4 +21,5 @@
     <h4>Voce ainda não procurou por nenhum pokemon.</h4>
   </div>
 </section>
-<app-error *ngIf="errorNotFound"></app-error>
+<app-error *ngIf="errorNotFound" [seached]="searchedTerm"></app-error>
+
