@@ -9,7 +9,9 @@
 <section >
   <h3>SEUS POKEMONS</h3>
   <div class="searched">
-    <app-collapsable-card *ngFor="let p of listOfSearch" [pokemon]="p"></app-collapsable-card>
+    <app-collapsable-card *ngFor="let p of listOfSearch" [pokemon]="p"
+                        (openDetails)="openDetailsModal(p)"
+    ></app-collapsable-card>
   </div>
   <div *ngIf="listOfSearch.length <= 0">
     <h4>Voce ainda não procurou por nenhum pokemon.</h4>

@@ -58,8 +58,7 @@ export class MainComponent {
     );
   }
 
-  openDetails(pokemon: PokemonModel) {
+  openDetailsModal(pokemon: PokemonModel) {
     this.pokemon = pokemon;
   }
-
 }

@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {PokemonModel} from "../../model/pokemon.model";
 import {NgForOf} from "@angular/common";
 
@@ -13,7 +13,15 @@ import {NgForOf} from "@angular/common";
 })
 export class CollapsableCardComponent {
   @Input() pokemon!: PokemonModel;
+  pokemonImage: string = '';
+  @Output() openDetails = new EventEmitter<void>();
 
-  // TODO: Eu quero que quando clicar ness componente, ele abra o modal de detalhes
-  // @Input() openDetails: Function;
+  ngOnChanges() {
+    this.pokemonImage = this.pokemon?.sprites.other.dream_world.front_default || this.pokemon?.sprites.other["official-artwork"].front_default ;
+  }
+
+  onCardClick() {
+    console.log(this.pokemonImage)
+    this.openDetails.emit();
+  }
 }
