@@ -1,9 +1,11 @@
-<section class="section-blue">
+<section class="section-blue" id="wave">
+  <div>
   <po-icon p-icon="ph-fill ph-totvs-logo"></po-icon>
   <h1>
     TOTVS
   </h1>
   <app-search-field (search)="onSearch($event)"></app-search-field>
+  </div>
 </section>
 <app-details-modal *ngIf="pokemon"
                    [pokemon]="pokemon"
