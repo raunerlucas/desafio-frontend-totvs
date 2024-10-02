@@ -2,12 +2,13 @@ import {CommonModule} from '@angular/common';
 import {Component} from '@angular/core';
 import {PoModule} from '@po-ui/ng-components';
 import {FormsModule} from "@angular/forms";
-import {PokemonDetailsModel, PokemonModel} from "../../model/pokemon.model";
+import {PokemonModel} from "../../model/pokemon.model";
 import {PokemonService} from "../../services/pokemon.service";
 import {SearchFieldComponent} from "../search-field/search-field.component";
 import {ErrorComponent} from "../error/error.component";
 import {CollapsableCardComponent} from "../collapsable-card/collapsable-card.component";
 import {DetailsModalComponent} from "../details-modal/details-modal.component";
+import {PokemonDetailsModel} from "../../model/pokemonDetails.model";
 
 @Component({
   selector: 'app-main',

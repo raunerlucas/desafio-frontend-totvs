@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {PokemonDetailsModel} from "../../model/pokemon.model";
 import {NgForOf, NgIf} from "@angular/common";
 import {PoButtonModule, PoFieldModule} from "@po-ui/ng-components";
+import {PokemonDetailsModel} from "../../model/pokemonDetails.model";
 
 @Component({
   selector: 'app-details-modal',
