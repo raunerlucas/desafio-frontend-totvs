@@ -3,13 +3,14 @@
     type="text"
     [(ngModel)]="searchTerm"
     (ngModelChange)="onSearchChange()"
+    (keydown.enter)="onSearch()"
     placeholder="Digite o nome do Pokémon..."
+    autofocus
   >
   <button (click)="onSearch()">Buscar</button>
   <ul class="suggestions" *ngIf="showSuggestions && pokemonSuggestions.length > 0">
     <li *ngFor="let suggestion of pokemonSuggestions"
-        (click)="onSuggestionClick(suggestion)"
-    >
+        (click)="onSuggestionClick(suggestion)">
       {{ suggestion }}
     </li>
   </ul>

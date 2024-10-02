@@ -1,11 +1,9 @@
 <section class="section-blue" id="wave">
-  <div>
-  <po-icon p-icon="ph-fill ph-totvs-logo"></po-icon>
-  <h1>
+  <h1 class="custom-title">
+    <img class="totvs-logo" src="assets/images/totvs_icon.svg" alt="TOTVS Logo">
     TOTVS
   </h1>
   <app-search-field (search)="onSearch($event)"></app-search-field>
-  </div>
 </section>
 <app-details-modal *ngIf="pokemon"
                    [pokemon]="pokemon"
