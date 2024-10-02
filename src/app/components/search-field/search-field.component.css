@@ -11,7 +11,6 @@
   outline: none;
   box-sizing: border-box;
   font-size: large;
-  text-transform: capitalize;
 }
 
 .search-container button {

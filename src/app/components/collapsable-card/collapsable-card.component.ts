@@ -13,7 +13,7 @@ import {NgForOf} from "@angular/common";
 })
 export class CollapsableCardComponent {
   @Input() pokemon!: PokemonModel;
-  pokemonImage: string = '';
+  protected pokemonImage = '';
   @Output() openDetails = new EventEmitter<void>();
 
   ngOnChanges() {
@@ -21,7 +21,6 @@ export class CollapsableCardComponent {
   }
 
   onCardClick() {
-    console.log(this.pokemonImage)
     this.openDetails.emit();
   }
 }

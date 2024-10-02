@@ -28,11 +28,9 @@ import {DetailsModalComponent} from "../details-modal/details-modal.component";
 export class MainComponent {
 
   listOfSearch: PokemonModel[] = JSON.parse(localStorage.getItem('listOfSearch') || '[]');
-  isLoading?: boolean;
-  pokemon?: PokemonDetailsModel | null;
-
-  errorNotFound = false;
-  searchedTerm: string = '';
+  pokemon!: PokemonDetailsModel | null;
+  protected errorNotFound = false;
+  protected searchedTerm= '';
 
   constructor(private pokemonService: PokemonService) {
   };
@@ -48,7 +46,6 @@ export class MainComponent {
   }
 
   onSearch(searchTerm: string) {
-    this.isLoading = true;
     this.pokemonService.getPokemon(searchTerm).subscribe(
       (pokemon) => {
         if (pokemon === null) {
@@ -58,7 +55,6 @@ export class MainComponent {
           this.openDetailsModal(pokemon)
           this.saveListToLocalStorage(pokemon);
         }
-        this.isLoading = false;
       }
     );
   }

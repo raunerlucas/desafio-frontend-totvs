@@ -15,9 +15,9 @@ import {NgForOf, NgIf} from "@angular/common";
   styleUrls: ['./search-field.component.css']
 })
 export class SearchFieldComponent {
-  searchTerm = '';
-  pokemonSuggestions: string[] = [];
-  showSuggestions = false;
+  protected searchTerm = '';
+  protected pokemonSuggestions: string[] = [];
+  protected showSuggestions = false;
 
   @Output() search = new EventEmitter<string>();
 

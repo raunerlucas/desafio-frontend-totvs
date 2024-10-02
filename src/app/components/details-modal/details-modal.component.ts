@@ -17,12 +17,12 @@ import {PoButtonModule, PoFieldModule} from "@po-ui/ng-components";
 })
 export class DetailsModalComponent {
   @Input() pokemon?: PokemonDetailsModel;
-  pokemonImg?: string = '';
+  protected pokemonImg = '';
   @Output() close = new EventEmitter<void>();
 
   ngOnChanges() {
     this.pokemonImg = this.pokemon?.sprites.other.dream_world.front_default
-      || this.pokemon?.sprites.other["official-artwork"].front_default;
+      || this.pokemon?.sprites.other["official-artwork"].front_default || '';
   }
 
   closeModal() {
