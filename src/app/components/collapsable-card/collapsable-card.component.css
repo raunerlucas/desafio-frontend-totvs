@@ -6,7 +6,7 @@
 }
 
 .container-custom:hover {
-  box-shadow: 1em 1em 2em 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0.5em 0.2em 0.5em 0.1em rgba(0, 0, 0, 0.2);
   cursor: pointer;
   transform: scale(1.02);
 }
@@ -55,6 +55,6 @@ img {
   margin: 1em;
   padding: 1em;
   border-radius: 12px;
-  box-shadow: inset 1em 1em 2em 0 rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 0 1em .1em rgba(0, 0, 0, 0.2);
   height: 18em;
 }
