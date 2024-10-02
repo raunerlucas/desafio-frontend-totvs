@@ -36,11 +36,25 @@
 
 .pokemon-details {
   text-align: center;
+  display: flex;
+  align-items: center;
 }
 
+.pokemon-sprite{
+  text-transform: capitalize;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: stretch;
+}
+
+.pokemon-sprite *{
+  margin: .2em 0;
+}
 .pokemon-image {
-  width: 150px;
-  height: 150px;
+  width: 15em;
+  height: 15em;
+  margin: 0 5em;
 }
 
 .pokemon-types {

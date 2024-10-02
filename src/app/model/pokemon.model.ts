@@ -47,11 +47,6 @@ export interface PokemonDetailsModel {
       url: string;
     };
   }[];
-  evolutionChain: { name: string, image: string }[];
-  description: string;
-  location_area_encounters: string;
-  weaknesses: string[];
-  resistances: string[];
 }
 
 export interface PokemonListResponse {
