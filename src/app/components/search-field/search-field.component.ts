@@ -2,6 +2,7 @@ import {Component, EventEmitter, Output} from '@angular/core';
 import {PokemonService} from '../../services/pokemon.service';
 import {FormsModule} from "@angular/forms";
 import {NgForOf, NgIf} from "@angular/common";
+import {PoFieldModule} from "@po-ui/ng-components";
 
 @Component({
   selector: 'app-search-field',
@@ -9,7 +10,8 @@ import {NgForOf, NgIf} from "@angular/common";
   imports: [
     FormsModule,
     NgForOf,
-    NgIf
+    NgIf,
+    PoFieldModule
   ],
   templateUrl: './search-field.component.html',
   styleUrls: ['./search-field.component.css']
