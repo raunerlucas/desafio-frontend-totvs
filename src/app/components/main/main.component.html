@@ -10,15 +10,15 @@
                    (close)="pokemon = null"
 ></app-details-modal>
 <section class="section-white">
-  <h3>SEUS POKEMONS</h3>
   <div class="searched">
     <app-collapsable-card *ngFor="let p of listOfSearch.slice().reverse()"
                           [pokemon]="p"
                           (openDetails)="openDetailsModal(p)"
     ></app-collapsable-card>
   </div>
-  <div *ngIf="listOfSearch.length <= 0">
-    <h4>Voce ainda não procurou por nenhum pokemon.</h4>
+  <div *ngIf="listOfSearch.length <= 0" class="custom-unsearched">
+    <img src="assets/images/page_search.svg" class="search-img" alt="imagem de lupa">
+    <h4>Você ainda não realizou nenhuma busca!</h4>
   </div>
 </section>
 <app-error *ngIf="errorNotFound" [seached]="searchedTerm"></app-error>
