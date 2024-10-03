@@ -39,7 +39,7 @@
 
 .searched {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(7, 1fr);
   gap: 1em;
   padding: 1em;
   border-radius: 16px;
@@ -60,34 +60,50 @@
 
 #wave {
   position: relative;
-  height: 20em;
-  width: auto;
+  height: 19em;
 }
 
-#wave:before {
+#wave:before, #wave:after {
   content: "";
   display: block;
   position: absolute;
-  border-radius: 0 0 50% 100%;
-  width: 54em;
-  height: 5em;
+  height: 20%;
   background: #0059ff;
+}
+
+#wave:before {
+  border-radius: 0 0 50% 100%;
+  width: 50%;
   right: 0;
   top: 17em;
   box-shadow: 20px 10px 5px -5px rgba(0, 0, 0, 0.3);
 }
 
 #wave:after {
-  content: "";
-  display: block;
-  position: absolute;
   border-radius: 0 0 100% 50%;
-  width: 47em;
-  height: 5em;
-  background: #0059ff;
+  width: 55%;
   left: 0;
   top: 17.1em;
   box-shadow: -20px 10px 5px -5px rgba(0, 0, 0, 0.3);
+}
+
+
+@media (max-width: 1800px) {
+  .searched {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+@media (max-width: 1600px) {
+  .searched {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media (max-width: 1200px) {
+  .searched {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 @media (max-width: 768px) {
@@ -96,8 +112,17 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   .searched {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  #wave:before, #wave:after {
+    height: 18%;
+  }
+  .searched {
+    grid-template-columns: repeat(1, 1fr);
   }
 }
