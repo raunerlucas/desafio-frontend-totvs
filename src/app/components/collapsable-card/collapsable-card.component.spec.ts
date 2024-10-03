@@ -1,7 +1,7 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {CollapsableCardComponent} from './collapsable-card.component';
-import {MOCK_POKEMON} from "../../testing/mock-pokemon-data";
+import {MOCK_POKEMON} from "../../mocks/pokemon-data.mock";
 
 describe('CollapsableCardComponent', () => {
   let component: CollapsableCardComponent;

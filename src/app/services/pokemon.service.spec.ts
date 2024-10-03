@@ -2,7 +2,7 @@ import {TestBed} from '@angular/core/testing';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 import {environment} from "../../environments/environment";
 import {PokemonService} from './pokemon.service';
-import {MOCK_POKEMON, MOCK_POKEMON_DETAILS, MOCK_POKEMON_LIST_RESPONSE} from "../testing/mock-pokemon-data";
+import {MOCK_POKEMON, MOCK_POKEMON_DETAILS, MOCK_POKEMON_LIST_RESPONSE} from "../mocks/pokemon-data.mock";
 
 describe('PokemonService', () => {
   let service: PokemonService;

@@ -1,7 +1,7 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {of} from 'rxjs';
 import {PokemonService} from '../../services/pokemon.service';
-import {MOCK_POKEMON, MOCK_POKEMON_DETAILS} from '../../testing/mock-pokemon-data';
+import {MOCK_POKEMON, MOCK_POKEMON_DETAILS} from '../../mocks/pokemon-data.mock';
 
 import {MainComponent} from './main.component';
 
