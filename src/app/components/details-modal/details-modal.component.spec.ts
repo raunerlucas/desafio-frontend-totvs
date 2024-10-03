@@ -1,6 +1,7 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-
+import {By} from '@angular/platform-browser';
 import {DetailsModalComponent} from './details-modal.component';
+import {MOCK_POKEMON_DETAILS} from "../../testing/mock-pokemon-data";
 
 describe('DetailsModalComponent', () => {
   let component: DetailsModalComponent;
@@ -10,7 +11,7 @@ describe('DetailsModalComponent', () => {
     await TestBed.configureTestingModule({
       imports: [DetailsModalComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(DetailsModalComponent);
     component = fixture.componentInstance;
@@ -19,5 +20,20 @@ describe('DetailsModalComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should display pokemon image when pokemon input is set', () => {
+    component.pokemon = MOCK_POKEMON_DETAILS;
+    component.ngOnChanges();
+    fixture.detectChanges();
+
+    const imgElement = fixture.debugElement.query(By.css('img')).nativeElement;
+    expect(imgElement.src).toContain(MOCK_POKEMON_DETAILS.sprites.other.dream_world.front_default);
+  });
+
+  it('should emit close event when closeModal is called', () => {
+    spyOn(component.close, 'emit');
+    component.closeModal();
+    expect(component.close.emit).toHaveBeenCalled();
   });
 });
