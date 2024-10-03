@@ -1,10 +1,8 @@
 import {TestBed} from '@angular/core/testing';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 import {environment} from "../../environments/environment";
-import {PokemonModel} from "../model/pokemon.model";
-import {PokemonListResponse} from "../model/pokemonListResponse.model";
-import {PokemonDetailsModel} from "../model/pokemonDetails.model";
 import {PokemonService} from './pokemon.service';
+import {MOCK_POKEMON, MOCK_POKEMON_DETAILS, MOCK_POKEMON_LIST_RESPONSE} from "../testing/mock-pokemon-data";
 
 describe('PokemonService', () => {
   let service: PokemonService;
@@ -19,26 +17,16 @@ describe('PokemonService', () => {
     httpMock = TestBed.inject(HttpTestingController);
   });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
-
   afterEach(() => {
     httpMock.verify();
   });
 
+  it('should be created', () => {
+    expect(service).toBeTruthy();
+  });
+
   it('should get a Pokémon by name', () => {
-    const dummyPokemon: PokemonModel = {
-      id: 25,
-      name: 'pikachu',
-      sprites: {
-        other: {
-          'dream_world': {front_default: 'https://example.com/pikachu-dream.png'},
-          'official-artwork': {front_default: 'https://example.com/pikachu-official.png'}
-        }
-      },
-      types: [{type: {name: 'electric'}}]
-    };
+    const dummyPokemon = MOCK_POKEMON
     service.getPokemon('pikachu').subscribe(pokemon => {
       expect(pokemon).toEqual(dummyPokemon);
     });
@@ -55,12 +43,7 @@ describe('PokemonService', () => {
   });
 
   it('should get all Pokémon names', () => {
-    const dummyResponse: PokemonListResponse = {
-      count: 1118,
-      next: "https://pokeapi.co/api/v2/pokemon?offset=20&limit=20",
-      previous: null,
-      results: [{name: 'pikachu', url: ""}, {name: 'bulbasaur', url: ""}]
-    };
+    const dummyResponse = MOCK_POKEMON_LIST_RESPONSE
     service.getAllPokemonNames().subscribe(names => {
       expect(names).toEqual(['pikachu', 'bulbasaur']);
     });
@@ -80,33 +63,8 @@ describe('PokemonService', () => {
   });
 
   it('should get Pokémon details', () => {
-    const dummyDetails: PokemonDetailsModel = {
-      id: 25,
-      name: 'pikachu',
-      height: 4,
-      weight: 60,
-      sprites: {
-        other: {
-          'dream_world': { front_default: 'https://example.com/pikachu-dream.png' },
-          'official-artwork': { front_default: 'https://example.com/pikachu-official.png' }
-        }
-      },
-      types: [{ type: { name: 'electric' } }],
-      abilities: [{ ability: { name: 'static' } }],
-      stats: [{'base_stat': 25, 'stat': {'name': 'hp'}}],
-      moves: [{move: {name: 'thunder-shock', url: ''}}]
-    };
-    const dummyPokemon: PokemonModel = {
-      id: 25,
-      name: 'pikachu',
-      sprites: {
-        other: {
-          'dream_world': {front_default: 'https://example.com/pikachu-dream.png'},
-          'official-artwork': {front_default: 'https://example.com/pikachu-official.png'}
-        }
-      },
-      types: [{type: {name: 'electric'}}]
-    };
+    const dummyDetails = MOCK_POKEMON_DETAILS
+    const dummyPokemon = MOCK_POKEMON
 
     service.getDetailsPokemon(dummyPokemon).subscribe(details => {
       expect(details).toEqual(dummyDetails);
