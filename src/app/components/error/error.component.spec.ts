@@ -10,7 +10,7 @@ describe('ErrorComponent', () => {
     await TestBed.configureTestingModule({
       imports: [ErrorComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(ErrorComponent);
     component = fixture.componentInstance;
@@ -19,5 +19,11 @@ describe('ErrorComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should have the correct input value', () => {
+    component.seached = "test value";
+    fixture.detectChanges();
+    expect(component.seached).toBe('test value');
   });
 });

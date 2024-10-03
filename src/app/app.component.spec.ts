@@ -1,1 +1,1 @@
-// Essa não dispensa testes, pois é muito básica.
+/** Este component é simples de mais para ser testado */
