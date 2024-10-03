@@ -17,7 +17,7 @@ import {PokemonDetailsModel} from "../../model/pokemonDetails.model";
 })
 export class DetailsModalComponent {
   @Input() pokemon?: PokemonDetailsModel;
-  protected pokemonImg = '';
+  public pokemonImg = '';
   @Output() close = new EventEmitter<void>();
 
   ngOnChanges() {

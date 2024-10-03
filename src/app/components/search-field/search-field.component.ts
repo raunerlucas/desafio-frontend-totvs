@@ -17,9 +17,9 @@ import {PoFieldModule} from "@po-ui/ng-components";
   styleUrls: ['./search-field.component.css']
 })
 export class SearchFieldComponent {
-  protected searchTerm = '';
-  protected pokemonSuggestions: string[] = [];
-  protected showSuggestions = false;
+  public searchTerm = '';
+  public pokemonSuggestions: string[] = [];
+  public showSuggestions = false;
 
   @Output() search = new EventEmitter<string>();
 

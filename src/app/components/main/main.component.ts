@@ -30,8 +30,8 @@ export class MainComponent {
 
   listOfSearch: PokemonModel[] = JSON.parse(localStorage.getItem('listOfSearch') || '[]');
   pokemon!: PokemonDetailsModel | null;
-  protected errorNotFound = false;
-  protected searchedTerm= '';
+  public errorNotFound = false;
+  public searchedTerm= '';
 
   constructor(private pokemonService: PokemonService) {
   };
