@@ -1,4 +1,4 @@
-<section [class]="'container-custom '+pokemon.types[0].type.name" (click)="onCardClick()">
+<section *ngIf="pokemon" [class]="'container-custom '+pokemon.types[0].type.name" (click)="onCardClick()">
   <div class="central-blend">
     <div class="custom">
       <img [src]="pokemonImage" [alt]="'Uma imagem do pokemon: '+pokemon.name">
