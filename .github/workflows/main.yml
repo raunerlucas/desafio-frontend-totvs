@@ -1,25 +1,36 @@
 name: Testes Angular
 
 on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ] 
+ push:
+   branches: [ main ] 
+ pull_request:
+   branches: [ main ] 
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
+ test:
+   runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v3 
+   steps:
+     - uses: actions/checkout@v3
 
-      - name: Usar Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
+     - name: Usar Node.js
+       uses: actions/setup-node@v3
+       with:
+         node-version: 18
 
-      - name: Instalar dependências
-        run: npm install
+     - name: Instalar dependências do Chrome
+       run: |
+         sudo apt-get update
+         sudo apt-get install -y xvfb libgtk2.0-0 libgconf-2-4 
 
-      - name: Rodar testes
-        run: npm run test
+     - name: Iniciar Xvfb
+       run: Xvfb :99 -ac -screen 0 1280x1024x24 &
+
+     - name: Definir a variável DISPLAY
+       run: echo "DISPLAY=:99" >> $GITHUB_ENV
+
+     - name: Instalar dependências
+       run: npm install
+
+     - name: Rodar testes
+       run: npm run test
