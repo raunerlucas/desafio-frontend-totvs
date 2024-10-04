@@ -9,6 +9,7 @@ import {ErrorComponent} from "../error/error.component";
 import {CardComponent} from "../card/card.component";
 import {DetailsModalComponent} from "../details-modal/details-modal.component";
 import {PokemonDetailsModel} from "../../model/pokemonDetails.model";
+import {LocalStorageService} from "../../services/local-storage.service";
 
 @Component({
   selector: 'app-main',
@@ -25,43 +26,51 @@ import {PokemonDetailsModel} from "../../model/pokemonDetails.model";
   templateUrl: './main.component.html',
   styleUrl: './main.component.css'
 })
-
 export class MainComponent {
 
-  listOfSearch: PokemonModel[] = JSON.parse(localStorage.getItem('listOfSearch') || '[]');
+  listOfSearch: PokemonModel[] = this.localStorageService.getListOfSearch();
   pokemon!: PokemonDetailsModel | null;
   public errorNotFound = false;
   public searchedTerm= '';
 
-  constructor(private pokemonService: PokemonService) {
-  };
+  constructor(private pokemonService: PokemonService, private localStorageService: LocalStorageService) {
+  }
 
-  // TODO fazer um service para salvar no local storage, verificar se o pokemon já está na lista antes
-  //  de buscar na api
   saveListToLocalStorage(pokemon: PokemonModel) {
-    const index = this.listOfSearch.findIndex(p => p.id === pokemon.id);
+    const pokemonInList = this.localStorageService.isPokemonInList(pokemon);
     const tamList = this.listOfSearch.length - 1;
-    if (tamList !== index || tamList === -1) {
-      index !== -1 ? this.listOfSearch.splice(index, 1) : null;
+    if (tamList !== pokemonInList || tamList === -1) {
+      if (pokemonInList !== -1) {
+        this.listOfSearch.splice(pokemonInList, 1);
+      }
       this.listOfSearch.push(pokemon);
-      localStorage.setItem('listOfSearch', JSON.stringify(this.listOfSearch));
+      this.localStorageService.saveListToLocalStorage(this.listOfSearch);
     }
   }
 
   onSearch(searchTerm: string) {
+    if (!searchTerm.trim()) {
+      this.thorowError();
+      return;
+    }
+    const pokemonInList = this.localStorageService.isPokemonInListByName(searchTerm);
+    if (pokemonInList) {
+      this.openDetailsModal(pokemonInList);
+      this.saveListToLocalStorage(pokemonInList);
+      return;
+    }
     this.pokemonService.getPokemon(searchTerm).subscribe(
       (pokemon) => {
         if (pokemon === null) {
           this.searchedTerm = searchTerm;
-          this.thorowError()
+          this.thorowError();
         } else {
-          this.openDetailsModal(pokemon)
+          this.openDetailsModal(pokemon);
           this.saveListToLocalStorage(pokemon);
         }
       }
     );
   }
-
   openDetailsModal(pokemon: PokemonModel) {
     this.pokemonService.getDetailsPokemon(pokemon).subscribe(
       (details) => {

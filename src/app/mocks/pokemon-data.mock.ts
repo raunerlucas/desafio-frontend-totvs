@@ -7,11 +7,11 @@ export const MOCK_POKEMON: PokemonModel = {
   name: 'pikachu',
   sprites: {
     other: {
-      'dream_world': { front_default: 'https://example.com/pikachu-dream.png' },
-      'official-artwork': { front_default: 'https://example.com/pikachu-official.png' }
+      'dream_world': {front_default: 'https://example.com/pikachu-dream.png'},
+      'official-artwork': {front_default: 'https://example.com/pikachu-official.png'}
     }
   },
-  types: [{ type: { name: 'electric' } }]
+  types: [{type: {name: 'electric'}}]
 };
 
 export const MOCK_POKEMON_DETAILS: PokemonDetailsModel = {
@@ -21,15 +21,27 @@ export const MOCK_POKEMON_DETAILS: PokemonDetailsModel = {
   weight: 60,
   sprites: {
     other: {
-      dream_world: { front_default: 'https://example.com/pikachu-dream.png' },
-      "official-artwork": { front_default: 'https://example.com/pikachu-official.png' }
+      dream_world: {front_default: 'https://example.com/pikachu-dream.png'},
+      "official-artwork": {front_default: 'https://example.com/pikachu-official.png'}
     }
   },
-  types: [{ type: { name: 'electric' } }],
-  abilities: [{ ability: { name: 'static' } }],
-  stats: [{ 'base_stat': 25, 'stat': { 'name': 'hp' } }],
-  moves: [{ move: { name: 'thunder-shock', url: '' } }]
+  types: [{type: {name: 'electric'}}],
+  abilities: [{ability: {name: 'static'}}],
+  stats: [{'base_stat': 25, 'stat': {'name': 'hp'}}],
+  moves: [{move: {name: 'thunder-shock', url: ''}}]
 };
+
+export const MOCK_POKEMON_LIST: PokemonModel[] = [MOCK_POKEMON, {
+  id: 1,
+  name: 'bulbasaur',
+  sprites: {
+    other: {
+      'dream_world': {front_default: 'https://example.com/bulbasaur-dream.png'},
+      'official-artwork': {front_default: 'https://example.com/bulbasaur-official.png'}
+    }
+  },
+  types: [{type: {name: 'grass'}}]
+}];
 
 export const MOCK_POKEMON_LIST_RESPONSE: PokemonListResponse = {
   count: 1118,
