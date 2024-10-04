@@ -3,16 +3,16 @@ import {PokemonModel} from "../../model/pokemon.model";
 import {NgForOf, NgIf} from "@angular/common";
 
 @Component({
-  selector: 'app-collapsable-card',
+  selector: 'app-card',
   standalone: true,
   imports: [
     NgForOf,
     NgIf
   ],
-  templateUrl: './collapsable-card.component.html',
-  styleUrl: './collapsable-card.component.css'
+  templateUrl: './card.component.html',
+  styleUrl: './card.component.css'
 })
-export class CollapsableCardComponent {
+export class CardComponent {
   @Input() pokemon!: PokemonModel;
   public pokemonImage = '';
   @Output() openDetails = new EventEmitter<void>();

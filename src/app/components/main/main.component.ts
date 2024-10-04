@@ -6,7 +6,7 @@ import {PokemonModel} from "../../model/pokemon.model";
 import {PokemonService} from "../../services/pokemon.service";
 import {SearchFieldComponent} from "../search-field/search-field.component";
 import {ErrorComponent} from "../error/error.component";
-import {CollapsableCardComponent} from "../collapsable-card/collapsable-card.component";
+import {CardComponent} from "../card/card.component";
 import {DetailsModalComponent} from "../details-modal/details-modal.component";
 import {PokemonDetailsModel} from "../../model/pokemonDetails.model";
 
@@ -19,7 +19,7 @@ import {PokemonDetailsModel} from "../../model/pokemonDetails.model";
     FormsModule,
     SearchFieldComponent,
     ErrorComponent,
-    CollapsableCardComponent,
+    CardComponent,
     DetailsModalComponent
   ],
   templateUrl: './main.component.html',
@@ -36,6 +36,8 @@ export class MainComponent {
   constructor(private pokemonService: PokemonService) {
   };
 
+  // TODO fazer um service para salvar no local storage, verificar se o pokemon já está na lista antes
+  //  de buscar na api
   saveListToLocalStorage(pokemon: PokemonModel) {
     const index = this.listOfSearch.findIndex(p => p.id === pokemon.id);
     const tamList = this.listOfSearch.length - 1;

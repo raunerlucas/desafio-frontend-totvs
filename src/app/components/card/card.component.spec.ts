@@ -1,19 +1,19 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {CollapsableCardComponent} from './collapsable-card.component';
+import {CardComponent} from './card.component';
 import {MOCK_POKEMON} from "../../mocks/pokemon-data.mock";
 
-describe('CollapsableCardComponent', () => {
-  let component: CollapsableCardComponent;
-  let fixture: ComponentFixture<CollapsableCardComponent>;
+describe('CardComponent', () => {
+  let component: CardComponent;
+  let fixture: ComponentFixture<CardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CollapsableCardComponent]
+      imports: [CardComponent]
     })
       .compileComponents();
 
-    fixture = TestBed.createComponent(CollapsableCardComponent);
+    fixture = TestBed.createComponent(CardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

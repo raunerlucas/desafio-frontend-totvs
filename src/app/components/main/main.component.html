@@ -11,10 +11,10 @@
 ></app-details-modal>
 <section class="section-white">
   <div class="searched">
-    <app-collapsable-card *ngFor="let p of listOfSearch.slice().reverse()"
+    <app-card *ngFor="let p of listOfSearch.slice().reverse()"
                           [pokemon]="p"
                           (openDetails)="openDetailsModal(p)"
-    ></app-collapsable-card>
+    ></app-card>
   </div>
   <div *ngIf="listOfSearch.length <= 0" class="custom-unsearched">
     <img src="assets/images/page_search.svg" class="search-img" alt="imagem de lupa">
