@@ -16,13 +16,12 @@
 .search-container button {
   position: absolute;
   top: 50%;
-  right: 10px;
+  right: 0;
   transform: translateY(-50%);
-  background-color: transparent;
-  /*background-color: #fcdb67;*/
   border: none;
   cursor: pointer;
-  padding: 5px;
+  background-color: #fcdb67;
+  border-radius: 0 5px 5px 0;
 }
 
 .search-container button:focus {
@@ -53,4 +52,20 @@
 
 .suggestions li:hover {
   background-color: #f2f2f2;
+}
+
+.search-zoom{
+  width: 5em;
+  filter: invert(1);
+  padding: 0.5em;
+  height: 3em;
+}
+
+search-button  {
+}
+
+@media (max-width: 768px) {
+  .search-container {
+    width: 20em;
+  }
 }

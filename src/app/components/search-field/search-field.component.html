@@ -7,7 +7,9 @@
     placeholder="Digite o nome do Pokémon..."
     autofocus
   >
-  <button (click)="onSearch()">Buscar</button>
+  <button (click)="onSearch()" class="search-button">
+    <img src="assets/images/search-zoom.svg" alt="Buscar" class="search-zoom">
+  </button>
   <ul class="suggestions" *ngIf="showSuggestions && pokemonSuggestions.length > 0">
     <li *ngFor="let suggestion of pokemonSuggestions"
         (click)="onSuggestionClick(suggestion)">
