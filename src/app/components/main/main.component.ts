@@ -1,6 +1,5 @@
 import {CommonModule} from '@angular/common';
 import {Component} from '@angular/core';
-import {PoModule} from '@po-ui/ng-components';
 import {FormsModule} from "@angular/forms";
 import {PokemonModel} from "../../model/pokemon.model";
 import {PokemonService} from "../../services/pokemon.service";
@@ -16,7 +15,6 @@ import {LocalStorageService} from "../../services/local-storage.service";
   standalone: true,
   imports: [
     CommonModule,
-    PoModule,
     FormsModule,
     SearchFieldComponent,
     ErrorComponent,

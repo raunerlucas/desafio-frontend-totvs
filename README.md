@@ -29,7 +29,6 @@ A aplicação foi desenvolvida utilizando as seguintes tecnologias:
 *   TypeScript: Linguagem de programação que adiciona tipagem estática ao JavaScript.
 *   HTML5: Linguagem de marcação para estruturar o conteúdo da página.
 *   CSS3: Linguagem de estilo para estilizar a aparência da página.
-*   Po UI: Biblioteca de componentes visuais para Angular, proporcionando uma interface moderna e responsiva.
 
 ## Como Executar o Projeto
 

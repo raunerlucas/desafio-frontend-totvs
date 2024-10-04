@@ -1,6 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {NgForOf, NgIf} from "@angular/common";
-import {PoButtonModule, PoFieldModule} from "@po-ui/ng-components";
 import {PokemonDetailsModel} from "../../model/pokemonDetails.model";
 
 @Component({
@@ -8,9 +7,7 @@ import {PokemonDetailsModel} from "../../model/pokemonDetails.model";
   standalone: true,
   imports: [
     NgForOf,
-    NgIf,
-    PoFieldModule,
-    PoButtonModule
+    NgIf
   ],
   templateUrl: './details-modal.component.html',
   styleUrl: './details-modal.component.css'
