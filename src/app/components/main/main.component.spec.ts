@@ -40,7 +40,7 @@ describe('MainComponent', () => {
     const pokemon = MOCK_POKEMON;
     pokemonService.getPokemon.and.returnValue(of(pokemon));
     spyOn(component, 'openDetailsModal');
-    component.onSearch('Bulbasaur');
+    component.onSearch('Pikachu');
     expect(component.openDetailsModal).toHaveBeenCalledWith(pokemon);
     expect(localStorage.getItem('listOfSearch')).toContain(JSON.stringify(pokemon));
   });
