@@ -13,6 +13,7 @@ import {NgForOf, NgIf} from "@angular/common";
   styleUrl: './card.component.css'
 })
 export class CardComponent {
+  detailsVisible = false;
   @Input() pokemon!: PokemonModel;
   public pokemonImage = '';
   @Output() openDetails = new EventEmitter<void>();
@@ -23,5 +24,9 @@ export class CardComponent {
 
   onCardClick() {
     this.openDetails.emit();
+  }
+
+  toggleDetails() {
+    this.detailsVisible = !this.detailsVisible;
   }
 }

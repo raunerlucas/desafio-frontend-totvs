@@ -72,36 +72,6 @@ app-search-field {
   max-width: 250px;
 }
 
-/*#wave {*/
-/*  position: relative;*/
-/*  height: 19em;*/
-/*}*/
-
-/*#wave:before, #wave:after {*/
-/*  content: "";*/
-/*  display: block;*/
-/*  position: absolute;*/
-/*  height: 20%;*/
-/*  background: #0059ff;*/
-/*}*/
-
-/*#wave:before {*/
-/*  border-radius: 0 0 50% 100%;*/
-/*  width: 50%;*/
-/*  right: 0;*/
-/*  top: 17em;*/
-/*  box-shadow: 20px 10px 5px -5px rgba(0, 0, 0, 0.3);*/
-/*}*/
-
-/*#wave:after {*/
-/*  border-radius: 0 0 100% 50%;*/
-/*  width: 55%;*/
-/*  left: 0;*/
-/*  top: 17.1em;*/
-/*  box-shadow: -20px 10px 5px -5px rgba(0, 0, 0, 0.3);*/
-/*}*/
-
-
 @media (max-width: 1800px) {
   .searched {
     grid-template-columns: repeat(6, 1fr);
