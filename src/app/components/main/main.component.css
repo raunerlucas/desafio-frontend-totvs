@@ -4,14 +4,19 @@
   padding: 1em;
 }
 
+app-search-field {
+  padding-bottom: 4.8em;
+  z-index: 1;
+}
+
 .section-white {
   background-color: #fafafa;
-  padding: 50px 0;
+  /*padding: 50px 0;*/
 }
 
 .section-blue {
   background: linear-gradient(to left, #213DDE, #5279E7);
-  /*background-image: url("assets/images/curva_divsoria.svg");*/
+  position: relative;
   color: white;
   text-align: center;
   padding: 50px 20px;
@@ -19,6 +24,16 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.section-blue::after {
+  content: "";
+  background-image: url("https://raw.githubusercontent.com/raunerlucas/desafio-frontend-totvs/c2c718e32692c950e05338e30f2707cd5ca47b82/src/assets/images/curva_divsoria.svg");
+  background-repeat: repeat-x;
+  position: absolute;
+  width: 100%;
+  height: 20em;
+
 }
 
 .custom-title {
@@ -35,7 +50,6 @@
   align-items: center;
   text-align: center;
   font-size: 1.4em;
-  padding-top: 4%;
 }
 
 .searched {
@@ -55,8 +69,7 @@
 
 .search-img {
   width: 100%;
-  max-width: 15em;
-  padding: .2em;
+  max-width: 250px;
 }
 
 /*#wave {*/
@@ -123,6 +136,7 @@
   #wave:before, #wave:after {
     height: 18%;
   }
+
   .searched {
     grid-template-columns: repeat(1, 1fr);
   }

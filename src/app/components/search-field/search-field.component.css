@@ -61,9 +61,6 @@
   height: 3em;
 }
 
-search-button  {
-}
-
 @media (max-width: 768px) {
   .search-container {
     width: 20em;
