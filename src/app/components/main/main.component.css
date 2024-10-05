@@ -5,7 +5,7 @@
 }
 
 app-search-field {
-  padding-bottom: 4.8em;
+  padding-bottom: 4.5em;
   z-index: 1;
 }
 
@@ -84,25 +84,25 @@ app-search-field {
   }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1400px) {
   .searched {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1060px) {
   .searched {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .searched {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 550px) {
   #wave:before, #wave:after {
     height: 18%;
   }

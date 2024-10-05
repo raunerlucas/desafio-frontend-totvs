@@ -1,14 +1,4 @@
 <section *ngIf="pokemon" [class]="'container-custom '+pokemon.types[0].type.name">
-  <div *ngIf="detailsVisible" class="pokemon-details">
-    <h3>ID #{{pokemon.id}}</h3>
-    <h5>Types</h5>
-    <ol class="types">
-      <li *ngFor="let type of pokemon.types"
-          [class]="'type '+type.type.name">{{ type.type.name }}
-      </li>
-    </ol>
-    <button class="details-button" (click)="onCardClick()">Mais Detalhes</button>
-  </div>
   <div class="central-blend" (click)="toggleDetails()">
     <div class="custom">
       <img [src]="pokemonImage" [alt]="'Uma imagem do pokemon: '+pokemon.name">
@@ -16,8 +6,20 @@
     <div class="custom-title">
       <h3>{{ pokemon.name }}</h3>
     </div>
-    <div class="details-button">
-      Sobre
+    <div class="details">
+      <div class="details-button">
+        <h4 (click)="onCardClick()" *ngIf="detailsVisible">Mais Detalhes</h4>
+        <h4 *ngIf="!detailsVisible">Sobre</h4>
+      </div>
+      <div *ngIf="detailsVisible" class="pokemon-details">
+        <h3>ID #{{pokemon.id}}</h3>
+        <h5>Types</h5>
+        <ol class="types">
+          <li *ngFor="let type of pokemon.types"
+              [class]="'type '+type.type.name">{{ type.type.name }}
+          </li>
+        </ol>
+      </div>
     </div>
   </div>
 </section>
