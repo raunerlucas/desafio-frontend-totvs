@@ -103,10 +103,6 @@ app-search-field {
 }
 
 @media (max-width: 550px) {
-  #wave:before, #wave:after {
-    height: 18%;
-  }
-
   .searched {
     grid-template-columns: repeat(1, 1fr);
   }
